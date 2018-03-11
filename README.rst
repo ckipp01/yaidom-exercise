@@ -7,10 +7,11 @@ This programming exercise uses the `yaidom`_ XML querying library for XML proces
 The following knowledge is assumed before starting with this exercise:
 
 * Basic XML knowledge, about XML syntax and XML namespaces (see below)
-* Some very basic knowledge about XBRL instances (see below)
+* Some very minimal knowledge about XBRL instances (see below)
 * Basic knowledge of Scala and its Collections API
 
-The exercise has the form of a unit test that must be made to succeed.
+The exercise has the form of a unit test that must be made to succeed. It tests the ability
+to query XML using Scala and yaidom.
 
 .. _`yaidom`: https://github.com/dvreeze/yaidom
 
@@ -46,7 +47,7 @@ the **yaidom** XML querying (Scala) library.
 
 First, make sure to have a good grasp of XML Namespaces. It may be advisable to read `Understanding Namespaces`_
 to that end. After that, consider reading some `yaidom documentation`_, to familiarize yourself with the yaidom API.
-The top-level page of the yaidom API documentation gives an overview of the API, by way of several examples.
+The top-level page of the `yaidom API documentation`_ gives an overview of the API, by way of several examples.
 
 The exercise is about XML processing, but it uses `XBRL`_ as the sample "XML dialect". Please read `Getting started with XBRL for developers`_.
 It takes very little time to read. Then have a look at the `sample XBRL instance`_ uses in the exercise. The content of that
@@ -76,8 +77,9 @@ Neither does it enforce the creation of namespace-well-formed XML. For these rea
 alternative that is more suitable in domains like XBRL.
 
 .. _`Understanding Namespaces`: http://www.lenzconsulting.com/namespaces/
-.. _`yaidom documentation`: http://dvreeze.github.io/
-.. _`XBRL`: www.xbrl.org
+.. _`yaidom documentation`: https://dvreeze.github.io/yaidom-and-namespaces.html
+.. _`yaidom API documentation`: https://www.javadoc.io/doc/eu.cdevreeze.yaidom/yaidom_2.12/1.7.1
+.. _`XBRL`: https://www.xbrl.org/
 .. _`Getting started with XBRL for developers`: https://www.xbrl.org/the-standard/how/getting-started-for-developers/
 .. _`sample XBRL instance`: https://github.com/dvreeze/yaidom-exercise/blob/master/src/test/resources/sample-Instance-Proof.xml
 .. _`TQA`: https://github.com/dvreeze/tqa
