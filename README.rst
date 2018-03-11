@@ -48,7 +48,9 @@ First, make sure to have a good grasp of XML Namespaces. It may be advisable to 
 to that end. After that, consider reading some `yaidom documentation`_, to familiarize yourself with the yaidom API.
 The top-level page of the yaidom API documentation gives an overview of the API, by way of several examples.
 
-The exercise is about XML processing, but it uses `XBRL`_ as the sample "XML dialect".
+The exercise is about XML processing, but it uses `XBRL`_ as the sample "XML dialect". Please read `Getting started with XBRL for developers`_.
+It takes very little time to read. Then have a look at the `sample XBRL instance`_ uses in the exercise. The content of that
+XBRL instance document should then make sense, in how facts, contexts and units "hang together" (via references to ID attributes).
 
 Next, turn to the exercise. In the test source tree, fill in the missing parts in test case ``QuerySpec``, making
 the test case run successfully.
@@ -76,5 +78,7 @@ alternative that is more suitable in domains like XBRL.
 .. _`Understanding Namespaces`: http://www.lenzconsulting.com/namespaces/
 .. _`yaidom documentation`: http://dvreeze.github.io/
 .. _`XBRL`: www.xbrl.org
+.. _`Getting started with XBRL for developers`: https://www.xbrl.org/the-standard/how/getting-started-for-developers/
+.. _`sample XBRL instance`: https://github.com/dvreeze/yaidom-exercise/blob/master/src/test/resources/sample-Instance-Proof.xml
 .. _`TQA`: https://github.com/dvreeze/tqa
 
