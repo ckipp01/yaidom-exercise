@@ -47,7 +47,8 @@ import eu.cdevreeze.yaidom.queryapi.HasENameApi.withEName
 class QuerySpec extends FlatSpec {
 
   // Parsing the instance into an "BackingElemApi" element as native yaidom "indexed element", although the actually chosen
-  // element implementation does not influence the querying code.
+  // element implementation does not influence the querying code. Indeed, all of the querying code
+  // below would remain exactly the same if another "BackingElemApi" element implementation had been used!
 
   private val docParser = DocumentParserUsingStax.newInstance()
 
@@ -86,7 +87,9 @@ class QuerySpec extends FlatSpec {
     // Implement the following function, using the EName corresponding to QName xbrli:context to test the element name
 
     def isContextHavingIdStartingWithI2007(elem: BackingElemApi): Boolean = {
-      ???
+      val isContext: Boolean = ???
+
+      isContext && hasIdStartingWithI2007(elem)
     }
 
     // Method filterChildElems filters child elements, like the name suggests.

@@ -10,8 +10,7 @@ The following knowledge is assumed before starting with this exercise:
 * Some very basic knowledge about XBRL instances (see below)
 * Basic knowledge of Scala and its Collections API
 
-Yaidom is gently introduced through the use of exercises. The exercises have the form of unit tests that
-must be made to succeed.
+The exercise has the form of a unit test that must be made to succeed.
 
 .. _`yaidom`: https://github.com/dvreeze/yaidom
 
@@ -21,6 +20,9 @@ Preparation
 
 Fork this (Scala SBT) project from Github, at `Yaidom-exercise`_. Make sure to either have an installation of `SBT`_ or
 `Maven`_ available. Also make sure to have a Java JDK 8 installed.
+
+The use of an IDE like Eclipse (Scala-IDE) or IntelliJ is not required, but can be handy (for its syntax highlighting and more).
+Tips for importing a Maven or sbt project into Eclipse (Scala-IDE) or IntelliJ can be found on the internet, if needed.
 
 Also download the API documentation of the yaidom library from `Maven central`_. Alternatively,
 bookmark the `yaidom API documentation`_ at `javadoc.io`_.
@@ -39,13 +41,17 @@ have this documentation at your disposal in a browser.
 The exercise
 ============
 
-The exercise leads to some practical experience with the **yaidom** XML querying (Scala) library.
+This programming exercise is not only a particular programming test, but it also (intentionally) leads to some practical experience with
+the **yaidom** XML querying (Scala) library.
 
 First, make sure to have a good grasp of XML Namespaces. It may be advisable to read `Understanding Namespaces`_
 to that end. After that, consider reading some `yaidom documentation`_, to familiarize yourself with the yaidom API.
+The top-level page of the yaidom API documentation gives an overview of the API, by way of several examples.
 
-Next, turn to the exercise. In the test source tree, fill in the missing parts in tests ``QuerySpec``, making
-the tests run successfully.
+The exercise is about XML processing, but it uses `XBRL`_ as the sample "XML dialect".
+
+Next, turn to the exercise. In the test source tree, fill in the missing parts in test case ``QuerySpec``, making
+the test case run successfully.
 
 It is important to not just make the tests compile and run successfully, but also to review how each test does what
 the test description says it does. For example, there may be a test in which descendant-or-self elements of some element are
@@ -60,6 +66,8 @@ After doing the exercise, the following should be clear:
 
 Although this is not shown here, yaidom is not only flexible in the choice of the underlying XML DOM-like implementation,
 but it is also a basis for creating arbitrary "yaidom dialects" on top of it, as "specific type-safe DOM trees".
+This is probably the real benefit of yaidom, as is illustrated by projects like `TQA`_ (for XBRL querying).
+Indeed, using TQA would have made this exercise a lot easier, because of its higher level of abstraction.
 
 Note that in comparison the Scala XML library does not offer this flexibility in supporting multiple "backends" and "dialects".
 Neither does it enforce the creation of namespace-well-formed XML. For these reasons, yaidom had to be developed as an
@@ -67,4 +75,6 @@ alternative that is more suitable in domains like XBRL.
 
 .. _`Understanding Namespaces`: http://www.lenzconsulting.com/namespaces/
 .. _`yaidom documentation`: http://dvreeze.github.io/
+.. _`XBRL`: www.xbrl.org
+.. _`TQA`: https://github.com/dvreeze/tqa
 
