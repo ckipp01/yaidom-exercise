@@ -19,3 +19,6 @@ node_modules/
 /project/target/
 /project/build/target
 
+#editor specific files
+.idea/
+.swp*
