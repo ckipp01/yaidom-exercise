@@ -10,6 +10,8 @@ The following knowledge is assumed before starting with this exercise:
 * Some very minimal knowledge about XBRL instances (see below)
 * Basic knowledge of Scala and its Collections API
 
+Learning (enough) about the yaidom library is seen as part of the exercise.
+
 The exercise has the form of a unit test that must be made to succeed. It tests the ability
 to query XML using Scala and yaidom.
 
