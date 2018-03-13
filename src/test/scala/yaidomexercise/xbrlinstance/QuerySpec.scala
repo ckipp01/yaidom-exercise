@@ -87,7 +87,8 @@ class QuerySpec extends FlatSpec {
     // Implement the following function, using the EName corresponding to QName xbrli:context to test the element name
 
     def isContextHavingIdStartingWithI2007(elem: BackingElemApi): Boolean = {
-      val isContext: Boolean = ???
+
+      val isContext: Boolean = elem.resolvedName == XbrliContextEName
 
       isContext && hasIdStartingWithI2007(elem)
     }
