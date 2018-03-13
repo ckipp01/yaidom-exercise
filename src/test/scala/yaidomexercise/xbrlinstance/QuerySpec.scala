@@ -117,7 +117,7 @@ class QuerySpec extends FlatSpec {
     // Implement the following function, using the EName corresponding to QName xbrldi:explicitMember to test the element name
 
     def isExplicitMember(elem: BackingElemApi): Boolean = {
-      ???
+      elem.resolvedName == XbrldiExplicitMemberEName
     }
 
     // Method filterElems filters descendant elements; the word "descendant" is implicit in the name.
