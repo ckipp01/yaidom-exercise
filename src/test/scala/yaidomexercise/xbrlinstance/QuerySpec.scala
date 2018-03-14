@@ -259,8 +259,15 @@ class QuerySpec extends FlatSpec {
     // Implement the following variable. Find all xbrli:measure elements, and return their element texts resolved as ENames.
     // For some background about QName-valued element texts, see the Evan Lenz article on Understanding XML Namespaces.
 
+    def isXbrliMeasure(elem: BackingElemApi): Boolean = {
+      elem.resolvedName == XbrliMeasureEName
+    }
+
+    val XbrliMeasureElems: immutable.IndexedSeq[BackingElemApi] =
+      rootElem.filterElems(isXbrliMeasure)
+
     val measureNames: Set[EName] = {
-      ???
+      XbrliMeasureElems.map(_.textAsResolvedQName).toSet
     }
 
     assertResult(Set(EName(Iso4217Namespace, "USD"), EName(XbrliNamespace, "pure"), EName(XbrliNamespace, "shares"))) {
