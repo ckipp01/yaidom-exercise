@@ -17,9 +17,7 @@
 package yaidomexercise.xbrlinstance
 
 import scala.collection.immutable
-
 import org.scalatest.FlatSpec
-
 import ENames._
 import Namespaces._
 import eu.cdevreeze.yaidom.core.EName
@@ -155,7 +153,7 @@ class QuerySpec extends FlatSpec {
     // Implement the following function, using the namespace corresponding to prefix "xbrli" to test the element's namespace
 
     def isInXbrliNamespace(elem: BackingElemApi): Boolean = {
-      ???
+      elem.resolvedName.namespaceUriOption.contains(XbrliNamespace)
     }
 
     // Method filterElemsOrSelf filters descendant-or-self elements; the word "descendant" is implicit in the name.
