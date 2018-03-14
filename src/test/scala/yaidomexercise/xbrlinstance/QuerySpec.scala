@@ -56,10 +56,6 @@ class QuerySpec extends FlatSpec {
     indexed.Elem(doc.documentElement)
   }
 
-  private val Iso4217Namespace = "http://www.xbrl.org/2003/iso4217"
-
-  private val GaapNamespace = "http://xasb.org/gaap"
-
   // In the exercises, use the EName and namespace constants as much as possible.
   // See the imports "ENames._" and "Namespaces._" and the namespace constants above.
 
@@ -189,8 +185,15 @@ class QuerySpec extends FlatSpec {
 
     // Implement the following variable. Find all xbrli:unit elements, and return their id attribute values.
 
+    def isInXbrliNamespace(elem: BackingElemApi): Boolean =
+      elem.resolvedName.namespaceUriOption.contains(XbrliNamespace)
+
+    val xbrliElems: immutable.IndexedSeq[BackingElemApi] = {
+      rootElem.filterElemsOrSelf(isInXbrliNamespace)
+    }
+
     val unitIds: Set[String] = {
-      ???
+???
     }
 
     assertResult(Set("U-Monetary", "U-Shares", "U-Pure")) {
@@ -231,8 +234,14 @@ class QuerySpec extends FlatSpec {
 
     // Implement the following variable. Find all gaap:RelatedPartyTypeOfRelationship elements, and return their element texts.
 
+    def targetElements(elem: BackingElemApi): Boolean =
+      elem.resolvedName == GaapRelatedPartyTypeOfRelationshipEName
+
+    val filteredContexts: immutable.IndexedSeq[BackingElemApi] =
+      rootElem.filterChildElems(targetElements)
+
     val interestingFactValues: Set[String] = {
-      ???
+      filteredContexts.map(_.text).toSet
     }
 
     assertResult(Set("Parent", "JointVenture")) {

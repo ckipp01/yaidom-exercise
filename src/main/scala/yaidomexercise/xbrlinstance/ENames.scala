@@ -27,6 +27,8 @@ object ENames {
 
   import Namespaces._
 
+  val GaapRelatedPartyTypeOfRelationshipEName = EName(GaapNamespace, "RelatedPartyTypeOfRelationship")
+
   val XbrliXbrlEName = EName(XbrliNamespace, "xbrl")
   val XbrliContextEName = EName(XbrliNamespace, "context")
   val XbrliUnitEName = EName(XbrliNamespace, "unit")
