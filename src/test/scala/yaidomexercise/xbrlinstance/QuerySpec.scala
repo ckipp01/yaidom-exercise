@@ -185,15 +185,12 @@ class QuerySpec extends FlatSpec {
 
     // Implement the following variable. Find all xbrli:unit elements, and return their id attribute values.
 
-    def isInXbrliNamespace(elem: BackingElemApi): Boolean =
-      elem.resolvedName.namespaceUriOption.contains(XbrliNamespace)
-
-    val xbrliElems: immutable.IndexedSeq[BackingElemApi] = {
-      rootElem.filterElemsOrSelf(isInXbrliNamespace)
+    val xbrliUnitElems: immutable.IndexedSeq[BackingElemApi] = {
+      rootElem.filterChildElems(withEName(XbrliUnitEName))
     }
 
     val unitIds: Set[String] = {
-???
+      xbrliUnitElems.map(_.attribute(IdEName)).toSet
     }
 
     assertResult(Set("U-Monetary", "U-Shares", "U-Pure")) {
