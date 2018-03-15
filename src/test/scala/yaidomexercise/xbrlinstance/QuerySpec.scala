@@ -290,7 +290,11 @@ class QuerySpec extends FlatSpec {
     // Implement the following function. See above, but here the scheme and identifier are parameters. This is a more challenging exercise.
 
     def isContextHavingEntityIdentifier(elem: BackingElemApi, scheme: String, identifier: String): Boolean = {
-      ???
+          elem.localName == "context" &&
+          elem.findElem(e =>
+            e.localName == "identifier" &&
+            e.attribute(SchemeEName) == scheme &&
+            e.text == identifier).nonEmpty
     }
 
     // Method findElem finds the optional first descendant element obeying the given element predicate;
