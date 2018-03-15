@@ -32,4 +32,6 @@ object Namespaces {
   val LinkNamespace = "http://www.xbrl.org/2003/linkbase"
   val XbrliNamespace = "http://www.xbrl.org/2003/instance"
   val XbrldiNamespace = "http://xbrl.org/2006/xbrldi"
+  val Iso4217Namespace = "http://www.xbrl.org/2003/iso4217"
+  val GaapNamespace = "http://xasb.org/gaap"
 }
