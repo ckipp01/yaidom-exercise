@@ -56,6 +56,9 @@ class QuerySpec extends FlatSpec {
     indexed.Elem(doc.documentElement)
   }
 
+  private val contextString:String = "context"
+
+
   // In the exercises, use the EName and namespace constants as much as possible.
   // See the imports "ENames._" and "Namespaces._" and the namespace constants above.
 
@@ -289,12 +292,14 @@ class QuerySpec extends FlatSpec {
 
     // Implement the following function. See above, but here the scheme and identifier are parameters. This is a more challenging exercise.
 
+    val identifierString:String = "identifier"
+
     def isContextHavingEntityIdentifier(elem: BackingElemApi, scheme: String, identifier: String): Boolean = {
-          elem.localName == "context" &&
+          elem.localName == contextString &&
           elem.findElem(e =>
-            e.localName == "identifier" &&
-            e.attribute(SchemeEName) == scheme &&
-            e.text == identifier).nonEmpty
+            e.localName == identifierString &&
+              e.attribute(SchemeEName) == scheme &&
+              e.text == identifier).nonEmpty
     }
 
     // Method findElem finds the optional first descendant element obeying the given element predicate;
@@ -333,8 +338,14 @@ class QuerySpec extends FlatSpec {
     // Implement the following variable. See above for the xbrli:context searched for. This is a more challenging exercise.
     // For some background about QName-valued attribute values, see the Evan Lenz article on Understanding XML Namespaces.
 
+    //TODO need to revisit this as it's passing, but not fully correct since I'm seeing if it contains that raw string rather than the value as EName
+    def gaapClassCheck(elem: BackingElemApi): Boolean = {
+      elem.localName == contextString &&
+        elem.findElem(e => e.attributeOption(DimensionEName).contains("gaap:ClassOfPreferredStockDescriptionAxis")).nonEmpty
+    }
+
     val interestingContextOption: Option[BackingElemApi] = {
-      ???
+      rootElem.findElem(e => gaapClassCheck(e))
     }
 
     assertResult(Some(XbrliContextEName)) {
