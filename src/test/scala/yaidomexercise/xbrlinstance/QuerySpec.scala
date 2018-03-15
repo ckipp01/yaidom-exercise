@@ -58,7 +58,6 @@ class QuerySpec extends FlatSpec {
 
   private val contextString:String = "context"
 
-
   // In the exercises, use the EName and namespace constants as much as possible.
   // See the imports "ENames._" and "Namespaces._" and the namespace constants above.
 
@@ -77,9 +76,9 @@ class QuerySpec extends FlatSpec {
     // Yaidom query: Filter all child elements of the root element named xbrli:context, having an ID attribute
     // starting with string "I-2007".
 
-    def hasIdStartingWithI2007(elem: BackingElemApi): Boolean = {
+    def hasIdStartingWithI2007(elem: BackingElemApi): Boolean =
       elem.attributeOption(IdEName).exists(_.startsWith("I-2007"))
-    }
+
 
     // Implement the following function, using the EName corresponding to QName xbrli:context to test the element name
 
@@ -113,9 +112,8 @@ class QuerySpec extends FlatSpec {
 
     // Implement the following function, using the EName corresponding to QName xbrldi:explicitMember to test the element name
 
-    def isExplicitMember(elem: BackingElemApi): Boolean = {
+    def isExplicitMember(elem: BackingElemApi): Boolean =
       elem.resolvedName == XbrldiExplicitMemberEName
-    }
 
     // Method filterElems filters descendant elements; the word "descendant" is implicit in the name.
     // An element predicate ("filter") is passed as argument.
@@ -151,9 +149,8 @@ class QuerySpec extends FlatSpec {
 
     // Implement the following function, using the namespace corresponding to prefix "xbrli" to test the element's namespace
 
-    def isInXbrliNamespace(elem: BackingElemApi): Boolean = {
+    def isInXbrliNamespace(elem: BackingElemApi): Boolean =
       elem.resolvedName.namespaceUriOption.contains(XbrliNamespace)
-    }
 
     // Method filterElemsOrSelf filters descendant-or-self elements; the word "descendant" is implicit in the name.
     // An element predicate ("filter") is passed as argument.
@@ -188,9 +185,8 @@ class QuerySpec extends FlatSpec {
 
     // Implement the following variable. Find all xbrli:unit elements, and return their id attribute values.
 
-    val xbrliUnitElems: immutable.IndexedSeq[BackingElemApi] = {
+    val xbrliUnitElems: immutable.IndexedSeq[BackingElemApi] =
       rootElem.filterChildElems(withEName(XbrliUnitEName))
-    }
 
     val unitIds: Set[String] = {
       xbrliUnitElems.map(_.attribute(IdEName)).toSet
@@ -240,9 +236,8 @@ class QuerySpec extends FlatSpec {
     val filteredContexts: immutable.IndexedSeq[BackingElemApi] =
       rootElem.filterChildElems(targetElements)
 
-    val interestingFactValues: Set[String] = {
+    val interestingFactValues: Set[String] =
       filteredContexts.map(_.text).toSet
-    }
 
     assertResult(Set("Parent", "JointVenture")) {
       interestingFactValues
@@ -262,16 +257,14 @@ class QuerySpec extends FlatSpec {
     // Implement the following variable. Find all xbrli:measure elements, and return their element texts resolved as ENames.
     // For some background about QName-valued element texts, see the Evan Lenz article on Understanding XML Namespaces.
 
-    def isXbrliMeasure(elem: BackingElemApi): Boolean = {
+    def isXbrliMeasure(elem: BackingElemApi): Boolean =
       elem.resolvedName == XbrliMeasureEName
-    }
 
     val XbrliMeasureElems: immutable.IndexedSeq[BackingElemApi] =
       rootElem.filterElems(isXbrliMeasure)
 
-    val measureNames: Set[EName] = {
+    val measureNames: Set[EName] =
       XbrliMeasureElems.map(_.textAsResolvedQName).toSet
-    }
 
     assertResult(Set(EName(Iso4217Namespace, "USD"), EName(XbrliNamespace, "pure"), EName(XbrliNamespace, "shares"))) {
       measureNames
@@ -344,9 +337,8 @@ class QuerySpec extends FlatSpec {
         elem.findElem(e => e.attributeOption(DimensionEName).contains("gaap:ClassOfPreferredStockDescriptionAxis")).nonEmpty
     }
 
-    val interestingContextOption: Option[BackingElemApi] = {
+    val interestingContextOption: Option[BackingElemApi] =
       rootElem.findElem(e => gaapClassCheck(e))
-    }
 
     assertResult(Some(XbrliContextEName)) {
       interestingContextOption.map(_.resolvedName)
